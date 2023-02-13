@@ -1,3 +1,4 @@
+import throttle from 'lodash/throttle';
 import { FormEvent, useMemo, useState } from 'react';
 import Header from '../components/Header/Header';
 import SearchInput from '../components/SearchInput/SearchInput';
@@ -8,11 +9,15 @@ function Home() {
   const [word, setWord] = useState('');
   const { wordData, status, refetch } = useFetchWordData({ word });
 
+  const throttledRefetch = useMemo(() => throttle(refetch, 750), [refetch]);
+
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
     console.log('handle submit');
     if (word.trim().length === 0) return;
-    refetch();
+    // refetch();
+    // throttle(refetch, 750);
+    throttledRefetch();
   };
 
   return (
