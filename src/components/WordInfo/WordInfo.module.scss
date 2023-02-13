@@ -1,0 +1,33 @@
+.wordInfoContainer {
+  margin-top: 2rem;
+}
+
+.wordInfo {
+  margin-bottom: 3rem;
+}
+
+.wordHeader {
+  display: flex;
+  margin-bottom: 0.7rem;
+  flex-direction: column;
+  .word {
+    font-size: 1.5rem;
+    margin-right: 1rem;
+  }
+}
+
+.wordLabelContainer {
+  display: flex;
+  .wordLabel {
+    color: var(--violet);
+    position: relative;
+  }
+  .separator {
+    height: 1px;
+    margin-left: 10px;
+    background-color: var(--gray-light2);
+    flex: 1;
+    align-self: center;
+    justify-self: stretch;
+  }
+}
