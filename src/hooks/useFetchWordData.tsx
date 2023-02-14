@@ -12,6 +12,7 @@ const useFetchWordData = ({ word }: IProps) => {
   const url2 = `https://www.dictionaryapi.com/api/v3/references/ithesaurus/json/${word}}?key=${
     import.meta.env.VITE_INTERMEDIATE_API_KEY
   }`;
+  const url3 = `https://api.dictionaryapi.dev/api/v2/entries/en/${word}`;
 
   // console.log(import.meta.env.VITE_INTERMEDIATE_API_KEY);
 
@@ -30,10 +31,14 @@ const useFetchWordData = ({ word }: IProps) => {
       // status: 200
       // statusText: ""
       const response2Thesaurus = await axios.get(url2);
+      // const response3 = await axios.get(url3, config);
+      const response3 = await axios.get(url3);
 
-      const [data1, data2Thesaurus] = await Promise.all([
+      // const [data1, data2Thesaurus, data3] = await Promise.all([
+      const [data1, data2Thesaurus, data3] = await Promise.allSettled([
         response1,
         response2Thesaurus,
+        response3,
       ]);
 
       // const data = await response1.data;
@@ -61,9 +66,18 @@ const useFetchWordData = ({ word }: IProps) => {
       // [[Prototype]]: Object
 
       // return data;
+
+      // console.log(data1, data2Thesaurus, data3);
+      // {dictionaryData: {…}, thesaurusData: {…},
+      // data3API: status: "fulfilled" value: {data: Array(1),
+
       return {
-        dictionaryData: data1.data,
-        thesaurusData: data2Thesaurus.data,
+        dictionaryData: data1,
+        thesaurusData: data2Thesaurus,
+        data3API: data3,
+        // dictionaryData: data1.data,
+        // thesaurusData: data2Thesaurus.data,
+        // data3API: data3.data,
       };
     } catch (error) {
       console.log('catch error', error);

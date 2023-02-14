@@ -3,31 +3,88 @@
 }
 
 .wordInfo {
-  margin-bottom: 3rem;
-}
-
-.wordHeader {
+  // margin-bottom: 3rem;
+  margin-bottom: 1rem;
   display: flex;
-  margin-bottom: 0.7rem;
+  // margin-bottom: 0.7rem;
   flex-direction: column;
   .word {
     font-size: 1.5rem;
     margin-right: 1rem;
+    margin-bottom: 0.3rem;
   }
 }
 
-.wordLabelContainer {
-  display: flex;
-  .wordLabel {
-    color: var(--violet);
-    position: relative;
+.phonetic {
+  color: var(--violet);
+  position: relative;
+  letter-spacing: 1.7px;
+}
+
+.meaningTitle {
+  margin-bottom: 0.2rem;
+  font-weight: 500;
+  color: rgb(158, 158, 158);
+}
+
+.wordDefinition {
+  margin: 1rem 0;
+
+  .wordLabelContainer {
+    display: flex;
+    .separator {
+      height: 1px;
+      margin-left: 10px;
+      background-color: var(--gray-light2);
+      flex: 1;
+      align-self: center;
+      justify-self: stretch;
+    }
+    margin-bottom: 0.4rem;
   }
-  .separator {
-    height: 1px;
-    margin-left: 10px;
-    background-color: var(--gray-light2);
-    flex: 1;
-    align-self: center;
-    justify-self: stretch;
+
+  .wordLabel {
+    font-style: italic;
+  }
+
+  .definitionsList {
+    padding-left: 2rem;
+    // ul {
+    list-style: none; /* Remove default bullets */
+    // }
+
+    li::before {
+      content: '\2022'; /* Add content: \2022 is the CSS Code/unicode for a bullet */
+      color: var(--violet);
+      font-weight: bold;
+      display: inline-block; /* to add space between the bullet and the text */
+      width: 1em; /* for spacing */
+      margin-left: -1em; /* for spacing */
+    }
+  }
+
+  .exampleTextContainer {
+    margin-top: 1rem;
+  }
+
+  .exampleText {
+    margin-top: 0.3rem;
+    color: rgb(109, 109, 109);
+    padding-left: 2rem;
+  }
+}
+
+.synonymsContainer {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 0.8rem;
+  .synonymsTitle {
+    color: rgb(158, 158, 158);
+    margin-right: 0.7rem;
+    font-weight: 500;
+  }
+  .synonym {
+    color: var(--violet);
+    margin-right: 0.5rem;
   }
 }
