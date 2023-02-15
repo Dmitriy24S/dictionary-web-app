@@ -10,12 +10,6 @@ html {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
-
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  /* background-color: #242424; */
-  background-color: #181818;
-
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
@@ -23,14 +17,32 @@ html {
   -webkit-text-size-adjust: 100%;
   text-size-adjust: 100%;
 
+  /* Dark */
+  /* color-scheme: light dark; */
+  /* color: rgba(255, 255, 255, 0.87); */
+  /* background-color: #242424; */
+  /* background-color: #181818; */
+
   /* variables dark */
-  --dark: black;
+  /* --dark: black;
   --light: white;
   --blue: #0080ff;
   --gray-light: rgb(50 50 50);
   --gray-light2: rgb(50 50 50);
   --gray: rgb(105, 105, 105);
-  --violet: rgb(152 44 219);
+  --violet: rgb(152 44 219); */
+
+  /* Light */
+  color: #213547;
+  background-color: rgba(255, 255, 255, 0.87);
+  /* variables light */
+  --dark: #213547;
+  --light: rgba(255, 255, 255, 0.87);
+  --blue: #0080ff;
+  --gray-light: rgb(240, 240, 240);
+  --gray-light2: rgb(232 232 232);
+  --gray: #bfbebe;
+  --violet: rgb(186, 96, 225);
 }
 
 #root {
@@ -56,6 +68,12 @@ a:hover {
   color: #535bf2;
 }
 
+input {
+  color: inherit;
+  font-family: inherit;
+  font-size: inherit;
+}
+
 button {
   border-radius: 8px;
   border: 1px solid transparent;
@@ -79,15 +97,14 @@ button:focus-visible {
   :root {
     color: #213547;
     background-color: #ffffff;
-
     /* variables light */
-    --dark: black;
+    /* --dark: black;
     --light: white;
     --blue: #0080ff;
     --gray-light: rgb(240, 240, 240);
     --gray-light2: rgb(232 232 232);
     --gray: #bfbebe;
-    --violet: rgb(186, 96, 225);
+    --violet: rgb(186, 96, 225); */
   }
   a:hover {
     color: #747bff;
@@ -95,4 +112,17 @@ button:focus-visible {
   button {
     /* background-color: #f9f9f9; */
   }
+}
+
+.dark-mode {
+  color: rgba(255, 255, 255, 0.87);
+  background-color: #181818;
+  /* variables dark */
+  --dark: #213547;
+  --light: rgba(255, 255, 255, 0.87);
+  --blue: #0080ff;
+  --gray-light: rgb(50 50 50);
+  --gray-light2: rgb(50 50 50);
+  --gray: rgb(105, 105, 105);
+  --violet: rgb(152 44 219);
 }
