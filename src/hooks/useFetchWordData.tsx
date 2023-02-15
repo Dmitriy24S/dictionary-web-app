@@ -89,6 +89,7 @@ const useFetchWordData = ({ word }: IProps) => {
     data: wordData,
     status,
     refetch,
+    isFetching,
   } = useQuery({
     queryKey: ['wordData'],
     queryFn: fetchWordData,
@@ -98,7 +99,7 @@ const useFetchWordData = ({ word }: IProps) => {
     enabled: false,
   });
 
-  return { wordData, status, refetch };
+  return { wordData, status, refetch, isFetching };
 };
 
 export default useFetchWordData;

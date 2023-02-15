@@ -7,9 +7,12 @@ import useFetchWordData from '../hooks/useFetchWordData';
 
 function Home() {
   const [word, setWord] = useState('');
-  const { wordData, status, refetch } = useFetchWordData({ word });
+  const { wordData, status, refetch, isFetching } = useFetchWordData({ word });
 
   const throttledRefetch = useMemo(() => throttle(refetch, 750), [refetch]);
+
+  // const isLoading = status === 'loading';
+  // console.log('isLoading', isLoading);
 
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
@@ -23,7 +26,14 @@ function Home() {
   return (
     <>
       <Header />
-      <SearchInput handleSubmit={handleSubmit} word={word} setWord={setWord} />
+      <SearchInput
+        handleSubmit={handleSubmit}
+        word={word}
+        setWord={setWord}
+        isFetching={isFetching}
+      />
+      {/* {isLoading && <LoadingIcon />} */}
+      {/* {isFetching && <LoadingIcon />} */}
       {wordData && <WordInfo wordData={wordData} status={status} />}
       {/* <h1>Hello World</h1> */}
     </>
