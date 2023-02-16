@@ -1,5 +1,6 @@
 import throttle from 'lodash/throttle';
 import { FormEvent, useMemo, useState } from 'react';
+import ErrorFetchMessage from '../components/ErrorFetchMessage/ErrorFetchMessage';
 import Header from '../components/Header/Header';
 import SearchInput from '../components/SearchInput/SearchInput';
 import WordInfo from '../components/WordInfo/WordInfo';
@@ -7,7 +8,11 @@ import useFetchWordData from '../hooks/useFetchWordData';
 
 function Home() {
   const [word, setWord] = useState('');
-  const { wordData, status, refetch, isFetching } = useFetchWordData({ word });
+  const { wordData, status, refetch, isFetching, error } = useFetchWordData({
+    word,
+  });
+  console.log('status:', status);
+  console.log('error:', error);
 
   const throttledRefetch = useMemo(() => throttle(refetch, 750), [refetch]);
 
@@ -34,6 +39,8 @@ function Home() {
       />
       {/* {isLoading && <LoadingIcon />} */}
       {/* {isFetching && <LoadingIcon />} */}
+      {error && <ErrorFetchMessage error={error?.response?.data} />}
+      {/* Property 'response' does not exist on type '{}'. */}
       {wordData && <WordInfo wordData={wordData} status={status} />}
       {/* <h1>Hello World</h1> */}
     </>

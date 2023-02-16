@@ -81,7 +81,11 @@ const useFetchWordData = ({ word }: IProps) => {
       };
     } catch (error) {
       console.log('catch error', error);
-      throw new Error('catch error fetching word data');
+      throw error;
+      // throw new Error('catch error fetching word data');
+      // return error?.response?.data;
+      // ! 'error' is of type 'unknown'.ts(18046)
+      // ! Property 'response' does not exist on type '{}'.
     }
   };
 
@@ -90,6 +94,7 @@ const useFetchWordData = ({ word }: IProps) => {
     status,
     refetch,
     isFetching,
+    error,
   } = useQuery({
     queryKey: ['wordData'],
     queryFn: fetchWordData,
@@ -97,9 +102,10 @@ const useFetchWordData = ({ word }: IProps) => {
     // notifyOnNetworkStatusChange: true
     // refetchOnMount: false,
     enabled: false,
+    retry: 1,
   });
 
-  return { wordData, status, refetch, isFetching };
+  return { wordData, status, refetch, isFetching, error };
 };
 
 export default useFetchWordData;
