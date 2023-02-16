@@ -82,10 +82,9 @@ const useFetchWordData = ({ word }: IProps) => {
     } catch (error) {
       console.log('catch error', error);
       throw error;
+      // ! 'error' is of type 'unknown'
       // throw new Error('catch error fetching word data');
-      // return error?.response?.data;
-      // ! 'error' is of type 'unknown'.ts(18046)
-      // ! Property 'response' does not exist on type '{}'.
+      // throw Error('catch error fetching word data');
     }
   };
 
@@ -95,6 +94,7 @@ const useFetchWordData = ({ word }: IProps) => {
     refetch,
     isFetching,
     error,
+    // const error: unknown
   } = useQuery({
     queryKey: ['wordData'],
     queryFn: fetchWordData,

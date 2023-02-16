@@ -5,8 +5,9 @@ interface IProps {
 }
 
 function ErrorFetchMessage({ error }: IProps) {
-  // error={error?.response?.data} ?
-  if (!error) {
+  const errorData = error?.response?.data;
+
+  if (!errorData) {
     return (
       <div className={styles.errorMessageContainer}>
         <h4 className={styles.errorTitle}>
@@ -18,9 +19,9 @@ function ErrorFetchMessage({ error }: IProps) {
 
   return (
     <div className={styles.errorMessageContainer}>
-      <h4 className={styles.errorTitle}>{error.title}</h4>
-      <p className={styles.errorMessage}>{error.message}</p>
-      <p className={styles.errorResolution}>{error.resolution}</p>
+      <h4 className={styles.errorTitle}>{errorData.title}</h4>
+      <p className={styles.errorMessage}>{errorData.message}</p>
+      <p className={styles.errorResolution}>{errorData.resolution}</p>
     </div>
   );
 }

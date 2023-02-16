@@ -11,8 +11,9 @@ function Home() {
   const { wordData, status, refetch, isFetching, error } = useFetchWordData({
     word,
   });
-  console.log('status:', status);
-  console.log('error:', error);
+  console.log('Home, status:', status);
+  console.log('Home, error:', error);
+  // ! const error: unknown
 
   const throttledRefetch = useMemo(() => throttle(refetch, 750), [refetch]);
 
@@ -39,7 +40,8 @@ function Home() {
       />
       {/* {isLoading && <LoadingIcon />} */}
       {/* {isFetching && <LoadingIcon />} */}
-      {error && <ErrorFetchMessage error={error?.response?.data} />}
+      {/* {error && <ErrorFetchMessage error={error?.response?.data} />} */}
+      {error && <ErrorFetchMessage error={error} />}
       {/* Property 'response' does not exist on type '{}'. */}
       {wordData && <WordInfo wordData={wordData} status={status} />}
       {/* <h1>Hello World</h1> */}
