@@ -30,7 +30,7 @@ html {
   --gray-light: rgb(50 50 50);
   --gray-light2: rgb(50 50 50);
   --gray: rgb(105, 105, 105);
-  --violet: rgb(152 44 219); */
+  --violet: rgb(152 44 219);
 
   /* Light */
   color: #213547;
@@ -42,7 +42,9 @@ html {
   --gray-light: rgb(240, 240, 240);
   --gray-light2: rgb(232 232 232);
   --gray: #bfbebe;
-  --violet: rgb(186, 96, 225);
+  /* --violet: rgb(186, 96, 225); */
+  --violet: rgb(152 44 219);
+  --violet2: 180, 98, 250;
 }
 
 #root {
@@ -105,6 +107,8 @@ button:focus-visible {
     --gray-light2: rgb(232 232 232);
     --gray: #bfbebe;
     --violet: rgb(186, 96, 225); */
+    /* --violet2: rgba(186, 96, 225, 50%); */
+    --violet2: 186, 96, 225;
   }
   a:hover {
     color: #747bff;

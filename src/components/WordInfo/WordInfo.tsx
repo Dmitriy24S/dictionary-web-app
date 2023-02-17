@@ -1,3 +1,6 @@
+/* eslint-disable jsx-a11y/media-has-caption */ // track element for audio
+import { useEffect, useRef, useState } from 'react';
+import { BsFillPlayFill, BsFillStopFill } from 'react-icons/bs';
 import styles from './WordInfo.module.scss';
 
 interface IProps {
@@ -25,13 +28,65 @@ function WordInfo({ wordData, status }: IProps) {
 
   // console.log('thesaurusData', thesaurusData); // thesaurusData Invalid API key. Not subscribed for this reference.
 
+  // Audio
+  const [isPlaying, setIsPlaying] = useState(false);
+  const audioRef = useRef<HTMLAudioElement>(null);
+
+  const togglePlay = () => {
+    setIsPlaying(true);
+    if (audioRef.current !== null) {
+      // setIsPlaying(!isPlaying);
+      if (isPlaying) {
+        audioRef.current.pause();
+        // setIsPlaying(false);
+      } else {
+        audioRef.current.play();
+        // setIsPlaying(false);
+      }
+    }
+  };
+
+  console.log('isPlaying', isPlaying);
+  useEffect(() => {
+    console.log('isPlaying2', isPlaying);
+  }, [isPlaying]);
+
   return (
     <div className={styles.wordInfoContainer}>
       {data3API?.map((el: any, index: number) => {
+        const hasAudioSample =
+          el?.phonetics[0]?.audio ||
+          el?.phonetics[1]?.audio ||
+          el?.phonetics[2]?.audio;
+
         return (
           <div key={index} className={styles.wordInfo}>
-            <h4 className={styles.word}>{el?.word}</h4>
-            <div className={styles.phonetic}>{el?.phonetic}</div>
+            <div className={styles.wordInfoHeader}>
+              <div>
+                <h4 className={styles.word}>{el?.word}</h4>
+                <div className={styles.phonetic}>{el?.phonetic}</div>
+              </div>
+              {hasAudioSample && (
+                <div className={styles.audioPlayButton}>
+                  <audio
+                    ref={audioRef}
+                    onEnded={() => setIsPlaying(false)}
+                    src={
+                      el?.phonetics[0]?.audio ||
+                      el?.phonetics[1]?.audio ||
+                      el?.phonetics[2]?.audio
+                    }
+                  />
+                  <button
+                    onClick={togglePlay}
+                    type="button"
+                    title="play word audio"
+                  >
+                    {isPlaying ? <BsFillStopFill /> : <BsFillPlayFill />}
+                  </button>
+                </div>
+              )}
+            </div>
             {el?.meanings?.map((meaning: any, index: number) => {
               return (
                 <div key={index} className={styles.wordDefinition}>
