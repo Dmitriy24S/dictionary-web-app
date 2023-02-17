@@ -127,7 +127,7 @@ function WordInfo({ wordData, status }: IProps) {
                   {/* synonyms */}
                   {meaning?.synonyms.length > 0 && (
                     <div className={styles.synonymsContainer}>
-                      <h4 className={styles.synonymsTitle}>Synoyms</h4>
+                      <h4 className={styles.synonymsTitle}>Synonyms</h4>
                       <p key="synonyms" className={styles.synonym}>
                         {meaning?.synonyms.join(', ')}
                       </p>
