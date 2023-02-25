@@ -4,7 +4,7 @@
 
 Dictionary web app w/ dark theme. Created with React, react router, react query, react icons, axios, lodash &amp; SCSS.
 
-[Live Demo](https:/https://dictionary-web-app-coral.vercel.app/) 👈
+[Live Demo](https://dictionary-web-app-coral.vercel.app/) 👈
 
 ## How to start
 
