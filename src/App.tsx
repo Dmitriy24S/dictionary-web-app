@@ -1,5 +1,6 @@
 import { QueryClient, QueryClientProvider } from 'react-query';
-import { HashRouter, Route, Routes } from 'react-router-dom';
+// import { HashRouter, Route, Routes } from 'react-router-dom';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Home from './pages/Home';
 import NotFound from './pages/NotFound';
 
@@ -17,11 +18,12 @@ export function App() {
 
 export function WrappedApp() {
   return (
-    <HashRouter>
+    // <HashRouter>
+    <BrowserRouter>
       {/* // Provide the client to App */}
       <QueryClientProvider client={queryClient}>
         <App />
       </QueryClientProvider>
-    </HashRouter>
+    </BrowserRouter>
   );
 }
