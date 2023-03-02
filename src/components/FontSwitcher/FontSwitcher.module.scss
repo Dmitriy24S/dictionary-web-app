@@ -19,6 +19,9 @@
     font-weight: 700;
     cursor: pointer;
     color: inherit;
+    option {
+      color: black;
+    }
   }
   select:focus {
     outline: none;
